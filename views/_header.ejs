@@ -5,6 +5,7 @@
         <div class=" d-flex justify-content-end collapse navbar-collapse" id="navbarSupportedContent">
 
             <div>
+                <a href="/api/page" class="btn1 btn btn-outline-warning">API</a>&nbsp;&nbsp;
                 <%if(locals.user){%>
                     <a href="/user/signout" class="btn1 btn btn-outline-warning">SignOut</a>
                 <%}else{%>
@@ -12,7 +13,7 @@
                     &nbsp;
                     <a href="/user/signup" class="btn1 btn btn-outline-warning">SignUp</a>
                 <%}%>
-                </div>
+            </div>
         </div>
     </div>
 </nav>

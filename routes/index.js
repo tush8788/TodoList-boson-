@@ -5,6 +5,8 @@ const homeController = require('../controller/home_controller');
 
 router.get('/',passport.checkAuthentication,homeController.home);
 
+router.get('/api/page',homeController.apiPage);
+
 router.use('/user',require('./user'));
 
 router.use('/task',require('./task'));

@@ -14,3 +14,10 @@ module.exports.home=async function(req,res){
         return res.redirect('back');
     }
 }
+
+//api page
+module.exports.apiPage = function(req,res){
+    return res.render('API',{
+        title:"API"
+    })
+}
