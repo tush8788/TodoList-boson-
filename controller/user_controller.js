@@ -41,3 +41,13 @@ module.exports.createSession = function(req,res){
     // console.log("here")
     return res.redirect('/');
 }
+
+//signout
+module.exports.signOut = function(req,res){
+    req.logout((err)=>{
+        if(err){
+            console.log(err);
+        }
+        return res.redirect('/user/signin');
+    })
+}
