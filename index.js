@@ -3,6 +3,7 @@ const expressLayout = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 const passport = require('passport');
 const localStrategy = require('./config/passport-local-strategy');
+const jwtStrategy = require('./config/passport-jwt-strategy');
 const expressSession = require('express-session');
 const mongoStore = require('connect-mongo');
 const flash = require('connect-flash');

@@ -8,9 +8,11 @@ let options={
     secretOrKey : 'secret'
 }
 
-passport.use(new extractJWT(options,async function(JwtPayload,done){
+passport.use(new jwtStrategy(options,async function(JwtPayload,done){
     try{
-        let user = await UserDB.findOne({email:JwtPayload.id});
+        // console.log(JwtPayload);
+        let user = await UserDB.findById(JwtPayload._id);
+        // console.log(user);
         if(user){
             return done(null,user);
         }
