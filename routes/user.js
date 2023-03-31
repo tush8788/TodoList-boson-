@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const userController = require('../controller/user_controller');
 
 //sign up page
@@ -12,6 +13,9 @@ router.post('/create',userController.createUser);
 router.get('/signin',userController.signin);
 
 //create session
-
+router.post('/create-session',passport.authenticate(
+    'local',
+    {failureRedirect:'/user/signin'}
+),userController.createSession);
 
 module.exports=router;

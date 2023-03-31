@@ -20,8 +20,14 @@ passport.use(new localStrategy({
     }
 }));
 
-passport.serializeUser((user,done){
-    done(user.id);
+passport.serializeUser(function(user,done){
+    try{
+        done(null,user.id);
+    }
+    catch(err){
+        console.log("inside ",err);
+        done(err);
+    }
 })
 
 passport.deserializeUser(async function(id,done){
@@ -29,13 +35,13 @@ passport.deserializeUser(async function(id,done){
         let user = await UserDB.findById(id);
 
         if(!user){
-           return done(null);
+           return done(null,false);
         }
 
-        return done(user);
+        return done(null,user);
     }
     catch(err){
-        console.log(err);
+        console.log("inside:"+err);
         done(err);
     }
 })
