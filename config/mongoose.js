@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.set('strictQuery',false);
+const dotenv=require('dotenv').config();
 
 mongoose.connect(process.env.MONGO_URL||'mongodb://localhost/boson-todo-list');
 
