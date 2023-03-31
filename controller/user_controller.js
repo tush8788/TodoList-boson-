@@ -35,3 +35,8 @@ module.exports.createUser =async function(req,res){
         return res.redirect('back');
     }
 }
+
+//create session
+module.exports.createSession = function(req,res){
+    return res.redirect('/');
+}
