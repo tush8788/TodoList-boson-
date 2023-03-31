@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-container">
+                <form class="row g-3" action="/task/update" method="post">
+                    <div class="col-12">
+                        <label for="TaskName" class="form-label">Task Name</label>
+                        <input type="text" name="taskName" value="<%=task.task%>" class="form-control" id="TaskName" placeholder="Enter Task" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" name="category" aria-label="Default select example" required>
+                            <option value="<%=task.category%>"selected><%=task.category%></option>
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="learning">Learning</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Due Date</label>
+                        <input type="date" value="<%=task.dueDate.toISOString().substr(0, 10)%>" name="dueDate" class="form-control" id="inputZip" required>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="hidden" name="userId" value="<%=task.user%>" class="form-control" id="inputZip">
+                    </div>
+                    <div class="col-md-12">
+                        <input type="hidden" name="taskId" value="<%=task.id%>" class="form-control" id="inputZip">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
