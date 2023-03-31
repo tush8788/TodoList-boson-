@@ -9,4 +9,6 @@ router.use('/user',require('./user'));
 
 router.use('/task',require('./task'));
 
+router.use('/v1',require('./v1/index'));
+
 module.exports=router;
