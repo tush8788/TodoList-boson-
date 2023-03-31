@@ -2,6 +2,9 @@ const UserDB = require('../models/user');
 
 //sign up page
 module.exports.signup = function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/');
+    }
     return res.render('signup',{
         title:"Signup"
     })
@@ -9,6 +12,9 @@ module.exports.signup = function(req,res){
 
 //sign in page
 module.exports.signin = function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/');
+    }
     return res.render('signin',{
         title:"Signin"
     })
