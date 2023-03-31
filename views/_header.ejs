@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">TODO</a>
+
+        <div class=" d-flex justify-content-end collapse navbar-collapse" id="navbarSupportedContent">
+
+            <form class=" ">
+                <%if(locals.user){%>
+                    <a href="/user/signout" class="btn1 btn btn-outline-warning">SignOut</a>
+                <%}else{%>
+                    <a href="/user/signin" class="btn1 btn btn-outline-warning">SignIn</a>
+                    &nbsp;
+                    <a href="/user/signup" class="btn1 btn btn-outline-warning">SignUp</a>
+                <%}%>
+            </form>
+        </div>
+    </div>
+</nav>

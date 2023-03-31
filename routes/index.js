@@ -7,4 +7,6 @@ router.get('/',passport.checkAuthentication,homeController.home);
 
 router.use('/user',require('./user'));
 
+router.use('/task',require('./task'));
+
 module.exports=router;

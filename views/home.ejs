@@ -1,3 +1,48 @@
-<div>
-    <h3><%=title%></h3>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-container">
+                <form class="row g-3" action="/task/create" method="post">
+                    <div class="col-12">
+                        <label for="TaskName" class="form-label">Task Name</label>
+                        <input type="text" name="taskName" class="form-control" id="TaskName" placeholder="Enter Task" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" name="category" aria-label="Default select example" required>
+                            <option value="personal">Personal</option>
+                            <option value="work">Work</option>
+                            <option value="learning">Learning</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Date</label>
+                        <input type="date" name="dueDate" class="form-control" id="inputZip" required>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="hidden" name="userId" value="<%=locals.user.id%>" class="form-control" id="inputZip">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Add Task</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="task-conatainer">
+                <% for(let t of tasks){%>
+                <div class="">
+                    <div>
+                        <h3><%=t.task%></h3>
+                        <p><%=t.category%></p>
+                    </div>
+                    <div>
+                        <a href="/task/edit/<%=t.id%>">Edit</a>
+                        <a href="/task/delete/<%=t.id%>">delete</a>
+                    </div>
+                </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
 </div>

@@ -9,6 +9,9 @@ const taskSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
     },
+    category:{
+        type:String,
+    },
     dueDate:{
         type:Date,
         required:true
