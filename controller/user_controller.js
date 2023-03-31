@@ -28,10 +28,12 @@ module.exports.createUser =async function(req,res){
 
         if(!user){
             user = await UserDB.create({email:req.body.email,password:req.body.password});
-            console.log("user create Successfully");
+            // console.log("user create Successfully");
+            req.flash('success',"user create Successfully");
             return res.redirect('/user/signin');
         }
         else{
+            req.flash('error',"user already exist");
             console.log("user already exist just login");
             return res.redirect('/user/signin');
         }
@@ -45,6 +47,7 @@ module.exports.createUser =async function(req,res){
 //create session
 module.exports.createSession = function(req,res){
     // console.log("here")
+    req.flash('success',"Signin Successfully");
     return res.redirect('/');
 }
 
@@ -54,6 +57,7 @@ module.exports.signOut = function(req,res){
         if(err){
             console.log(err);
         }
+        req.flash('success',"Signout Successfully");
         return res.redirect('/user/signin');
     })
 }

@@ -5,6 +5,8 @@ const passport = require('passport');
 const localStrategy = require('./config/passport-local-strategy');
 const expressSession = require('express-session');
 const mongoStore = require('connect-mongo');
+const flash = require('connect-flash');
+const notification = require('./config/notification');
 const port = process.env.PORT||8000;
 
 const app = express();
@@ -43,6 +45,10 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+
+//notification
+app.use(flash());
+app.use(notification.setFlash);
 
 //handle urls
 app.use('/',require('./routes/index.js'));
