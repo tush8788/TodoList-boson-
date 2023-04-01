@@ -17,4 +17,5 @@ router.post('/update/:id',passport.authenticate('jwt',{session:false}),taskContr
 
 //delete task
 router.delete('/delete/:id',passport.authenticate('jwt',{session:false}),taskControllerApi.deleteTask);
+
 module.exports=router;

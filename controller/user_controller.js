@@ -2,9 +2,11 @@ const UserDB = require('../models/user');
 
 //sign up page
 module.exports.signup = function(req,res){
+    //if user login then this page not visible to user
     if(req.isAuthenticated()){
         return res.redirect('/');
     }
+    //user not login then
     return res.render('signup',{
         title:"Signup"
     })
@@ -12,9 +14,11 @@ module.exports.signup = function(req,res){
 
 //sign in page
 module.exports.signin = function(req,res){
+    //if user login then this page not visible to user
     if(req.isAuthenticated()){
         return res.redirect('/');
     }
+    //user not login then
     return res.render('signin',{
         title:"Signin"
     })
@@ -23,16 +27,16 @@ module.exports.signin = function(req,res){
 //create user
 module.exports.createUser =async function(req,res){
     try{
-        // console.log(req.body)
+        //find user in db
         let user = await UserDB.findOne({email:req.body.email});
-
+        //if user not found then create new
         if(!user){
             user = await UserDB.create({email:req.body.email,password:req.body.password});
-            // console.log("user create Successfully");
             req.flash('success',"user create Successfully");
             return res.redirect('/user/signin');
         }
         else{
+            //if user already exist in db then just back
             req.flash('error',"user already exist");
             console.log("user already exist just login");
             return res.redirect('/user/signin');
@@ -46,13 +50,13 @@ module.exports.createUser =async function(req,res){
 
 //create session
 module.exports.createSession = function(req,res){
-    // console.log("here")
     req.flash('success',"Signin Successfully");
     return res.redirect('/');
 }
 
 //signout
 module.exports.signOut = function(req,res){
+    //logout
     req.logout((err)=>{
         if(err){
             console.log(err);

@@ -4,17 +4,17 @@ const jwt = require('jsonwebtoken');
 //create user
 module.exports.createUser =async function(req,res){
     try{
-        // console.log(req.body)
+        //find user in DB
         let user = await UserDB.findOne({email:req.body.email});
-
+        //user not found then create new user
         if(!user){
             user = await UserDB.create({email:req.body.email,password:req.body.password});
-            // console.log("user create Successfully");
             return res.status(201).json({
                 message:"user create Successfully"
             })
         }
         else{
+            //if user already exist then just back
             return res.status(403).json({
                 message:"user already exist just login"
             })
@@ -29,18 +29,19 @@ module.exports.createUser =async function(req,res){
 // create session
 module.exports.createSession =async function(req,res){
     try{
-        // console.log(req.body)
+        //find user in db
         let user = await UserDB.findOne({email:req.body.email});
-        // console.log(user)
-
+        //check user found or not 
         if(!user || user.password != req.body.password){
+            //user not found or password not match
             return res.status(401).json({
                 message:"Invaild email or password"
             })
         }
-
+        //if user found or password match then create token
         return res.status(200).json({
             message:"Successfully authenticate",
+            //create jsonwebtoken
             JwtToken:jwt.sign(user.toJSON(),"secret",{expiresIn:1000*100*60})
         })
     }

@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="/css/home.css">
+
 <div class="container">
     <div class="row">
         <div class="col-12 div1">
+            <!-- form -->
             <div class="form-container">
                 <center>
                     <h2>Task</h2>
@@ -36,6 +38,7 @@
             </div>
         </div>
         <div class="col-12 div2">
+            <!-- tasks -->
             <div class="task-conatainer">
                 <table class="table table-hover">
                     <thead>
@@ -51,17 +54,29 @@
                     </thead>
                     <tbody>
                         <% let cnt=1;%>
-                        <% for(let t of tasks){%>
-                            <tr>
-                                <th scope="row"><%=cnt%></th>
-                                <td><%=t.task%></td>
-                                <td><%=t.category%></td>
-                                <td><%=t.createdAt.toISOString().substr(0, 10)%></td>
-                                <td><%=t.dueDate.toISOString().substr(0, 10)%></td>
-                                <td><a class="btn btn-dark btn-outline-warning" href="/task/edit/<%=t.id%>">Edit</a></td>
-                                <td><a class="btn btn-dark btn-outline-warning" href="/task/delete/<%=t.id%>">Delete</a></td>
-                            </tr>
-                        <% cnt++;}%>
+                            <% for(let t of tasks){%>
+                                <tr>
+                                    <th scope="row">
+                                        <%=cnt%>
+                                    </th>
+                                    <td>
+                                        <%=t.task%>
+                                    </td>
+                                    <td>
+                                        <%=t.category%>
+                                    </td>
+                                    <td>
+                                        <%=t.createdAt.toISOString().substr(0, 10)%>
+                                    </td>
+                                    <td>
+                                        <%=t.dueDate.toISOString().substr(0, 10)%>
+                                    </td>
+                                    <td><a class="btn btn-dark btn-outline-warning" href="/task/edit/<%=t.id%>">Edit</a>
+                                    </td>
+                                    <td><a class="btn btn-dark btn-outline-warning"
+                                            href="/task/delete/<%=t.id%>">Delete</a></td>
+                                </tr>
+                                <% cnt++;}%>
                     </tbody>
                 </table>
             </div>

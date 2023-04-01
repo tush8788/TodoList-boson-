@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+//user controller
 const userController = require('../controller/user_controller');
 
 //sign up page
