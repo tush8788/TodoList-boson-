@@ -1,5 +1,5 @@
 # TODO List (Boson-assignment)
-We’re going to design an API as well as web page
+We’re going to design an API as well as web page 
 
 ##Functionality
 1. signin and signup
@@ -7,6 +7,9 @@ We’re going to design an API as well as web page
 3. update task
 4. delete task
 5. API
+
+##API Access 
+1. for access api use this url "https://todo-boson.onrender.com" and also refer web app api page 
 
 ##Tools 
 1. Node Js  v-16.18.0
